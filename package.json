@@ -1,0 +1,37 @@
+{
+  "name": "02-api-solid",
+  "version": "1.0.0",
+  "description": "GymPass style app.",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
+    "test:install-prisma-environment": "npm link vitest-environment-prisma",
+    "build": "tsup src --out-dir build",
+    "test": "vitest run --dir src/use-cases",
+    "test:watch": "vitest --dir src/use-cases",
+    "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
+    "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest --dir src/http",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "6.2.1",
+    "dotenv": "16.4.7",
+    "fastify": "5.2.1",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "2.2.2",
+    "@types/node": "22.10.10",
+    "eslint": "8.57.1",
+    "prisma": "6.2.1",
+    "tsup": "8.3.5",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
+  }
+}
