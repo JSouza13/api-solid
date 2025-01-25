@@ -3,19 +3,20 @@
   "version": "1.0.0",
   "description": "GymPass style app.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
     "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
     "test:install-prisma-environment": "npm link vitest-environment-prisma",
     "build": "tsup src --out-dir build",
-    "test": "vitest run --dir src/use-cases",
-    "test:watch": "vitest --dir src/use-cases",
+    "test": "vitest run --dir src/services",
+    "test:watch": "vitest --dir src/services",
     "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
     "test:e2e": "vitest run --dir src/http",
     "test:e2e:watch": "vitest --dir src/http",
     "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui --api.port 3000"
   },
   "keywords": [],
   "author": "",
@@ -31,10 +32,14 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "2.2.2",
     "@types/node": "22.10.10",
+    "@vitest/coverage-v8": "3.0.4",
+    "@vitest/ui": "3.0.4",
     "eslint": "8.57.1",
     "prisma": "6.2.1",
     "tsup": "8.3.5",
     "tsx": "4.19.2",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "vite-tsconfig-paths": "5.1.4",
+    "vitest": "3.0.4"
   }
 }
