@@ -1,9 +1,13 @@
-import { defineConfig } from 'vitest/config'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { defineConfig, ViteUserConfig } from 'vitest/config'
 
-export default defineConfig({
-  plugins: [tsconfigPaths()],
-  test: {
-    environmentMatchGlobs: [['src/http/controllers/**', 'prisma']],
-  },
+export default defineConfig(async (): Promise<ViteUserConfig> => {
+  const tsconfigPaths = await import('vite-tsconfig-paths').then(
+    (mod) => mod.default,
+  )
+  return {
+    plugins: [tsconfigPaths()],
+    test: {
+      environmentMatchGlobs: [['src/http/controllers/**', 'prisma']],
+    },
+  }
 })
